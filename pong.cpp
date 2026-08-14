@@ -75,6 +75,28 @@ class Paddle {
 
 };
 
+void paddleMove(Paddle& paddle, string direction){
+    int paddleSpeed = 5;
+
+    if (paddle.y < Config.screenHeight - paddle.width/2 && paddle.y > 0 + paddle.width/2){
+        if(direction == "UP"){ 
+            paddle.y -= paddleSpeed;
+            paddle.shape.setPosition({paddle.x, paddle.y});
+        } 
+        else if (direction == "DOWN") {
+            paddle.y += paddleSpeed;
+            paddle.shape.setPosition({paddle.x, paddle.y});
+        } else {
+            cout << "Invalid Direction";
+        }
+    } else if (paddle.y >= Config.screenHeight - paddle.width/2){
+        paddle.y -= paddleSpeed;
+    } else if (paddle.y <= 0 + paddle.width/2){
+        paddle.y += paddleSpeed;
+    }
+}
+
+
 
 
 int main(){
@@ -102,6 +124,21 @@ int main(){
             }
             //PUT GAME LOOP HERE
             
+            
+            if (Keyboard::isKeyPressed(Keyboard::Key::Up)){
+                paddleMove(rightPaddle, "UP");
+            }
+            if (Keyboard::isKeyPressed(Keyboard::Key::Down)){
+                paddleMove(rightPaddle, "DOWN");
+            }
+            if (Keyboard::isKeyPressed(Keyboard::Key::W)){
+                paddleMove(leftPaddle, "UP");
+            }
+            if (Keyboard::isKeyPressed(Keyboard::Key::S)){
+               paddleMove(leftPaddle, "DOWN");
+
+            }
+
 
         
 
