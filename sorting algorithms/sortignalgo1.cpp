@@ -11,13 +11,11 @@ std::vector<int> initialList;
 
 std::vector<int> secondaryList;
 
-int randIntRange = 100;
+int randIntRange = 1000;
 
 
 int main(){
 
-    std::cout << "HELLO" << '\n';
-    std::cout.flush();
 
     srand(time(0));
 
@@ -26,7 +24,6 @@ int main(){
     for (int i = 0; i < listLength; i++){
         int randomInt = rand() % (randIntRange + 1);
         initialList.push_back(randomInt);
-        std::cout << initialList[i] << '\n';
 
     }
 
